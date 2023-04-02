@@ -1,0 +1,56 @@
+# up all project with docker compose
+# version: '3.8'
+# services:
+#   mongo-host:
+#     restart: unless-stopped
+#     image: mongo
+#     volumes:
+#       - dbvol:/data/db
+#     ports:
+#       - '27017:27017'
+#   backend:
+#     depends_on:
+#       - mongo-host
+#     build: ./server
+#     restart: unless-stopped
+#     volumes:
+#       - servervol:/app/serverdata
+#     environment:
+#       - MONGO_URI=mongodb://mongo-host:27017
+#       - PORT=4000
+#     command: bash -c "npm run start:dev"
+#     ports:
+#       - 4000:4000
+#     links:
+#       - mongo-host
+#   frontend:
+#     build: ./client
+#     volumes:
+#       - clientvol:/app/clientdata
+#     environment:
+#       - VITE_APP_SERVER=http://0.0.0.0:4000
+#     command: bash -c "npm run dev"
+#     ports:
+#       - 5173:5173
+# volumes:
+#   servervol:
+#   dbvol:
+#   clientvol:
+
+# just up mongodb
+version: '3.8'
+services:
+  mongo-host:
+    restart: unless-stopped
+    image: mongo
+    volumes:
+      - dbvol:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - hw02_network
+volumes:
+  dbvol:
+networks:
+  hw02_network:
+    name: hw02_network
