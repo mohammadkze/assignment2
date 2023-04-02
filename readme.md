@@ -9,4 +9,4 @@ optio.2
 1- run "sh main.sh"
 this work fileClinet.sh and fileServer.sh create volume and others
 
-alse you run fileClient.sh and fileServer.sh and do not need main.sh by the way but makes your work easy
+also can you run fileClient.sh and fileServer.sh and do not need main.sh by the way but makes your work easy
